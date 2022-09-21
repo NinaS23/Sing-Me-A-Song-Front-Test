@@ -1,11 +1,11 @@
 import {faker} from "@faker-js/faker";
 
-/* 
-beforeEach(async () => {
-  await cy.request('POST', 'http://localhost:6003/e2e/reset', {});
-});
- */
 
+/* beforeEach(async () => {
+  await cy.resetDatabase()
+});
+ 
+ */
 describe('test creation of a recommendation', () => {
   it('passes', () => {
     const recommendation = {
