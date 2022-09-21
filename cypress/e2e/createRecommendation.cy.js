@@ -2,10 +2,10 @@ import {faker} from "@faker-js/faker";
 
 
 /* beforeEach(async () => {
-  await cy.resetDatabase()
+  await cy.resetDatabase();
 });
- 
- */
+  */
+
 describe('test creation of a recommendation', () => {
   it('passes', () => {
     const recommendation = {
