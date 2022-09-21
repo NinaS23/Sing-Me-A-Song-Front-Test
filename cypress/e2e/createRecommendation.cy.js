@@ -2,7 +2,7 @@ import {faker} from "@faker-js/faker";
 
 /* 
 beforeEach(async () => {
-  await cy.request('POST', 'http://localhost:5000/e2e/reset', {});
+  await cy.request('POST', 'http://localhost:6003/e2e/reset', {});
 });
  */
 
