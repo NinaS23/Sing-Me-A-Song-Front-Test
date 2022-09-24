@@ -106,5 +106,8 @@ describe('test for downvote a recommendation', () => {
 
     cy.intercept("POST", "/recommendations/1/downvote").as("downvote");
     cy.url().should("equal", "http://localhost:3000/");
-  })
+  });
 })
+
+
+
