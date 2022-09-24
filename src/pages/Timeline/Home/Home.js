@@ -45,7 +45,7 @@ export default function Home() {
 
       {
         recommendations.length === 0 && (
-          <div>No recommendations yet! Create your own :)</div>
+          <div id="empty">No recommendations yet! Create your own :)</div>
         )
       }
     </>

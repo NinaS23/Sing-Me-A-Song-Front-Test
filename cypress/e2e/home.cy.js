@@ -1,7 +1,7 @@
-import {faker} from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 
-beforeEach( async () => {
- await cy.resetDatabase()
+beforeEach(async () => {
+  await cy.resetDatabase()
 });
 
 describe('test creation of a recommendation', () => {
@@ -20,6 +20,41 @@ describe('test creation of a recommendation', () => {
 
     cy.url().should("equal", "http://localhost:3000/");
   })
+
+  it(" should not create recommendation with duplicated name, sucess", () => {
+    const recommendation = {
+      name: "hatuna matata",
+      youtubeLink: "https://www.youtube.com/watch?v=zDsE4BPuFRQ"
+    }
+    cy.visit("http://localhost:3000/");
+
+    cy.createRecommendation(recommendation);
+    cy.request({
+      method: "POST",
+      url: 'http://localhost:6003/recommendations',
+      failOnStatusCode: false,
+      body: recommendation
+    }).then((response) => {
+      expect(response.status).to.eq(409);
+      expect(response.body).to.eq("Recommendations names must be unique");
+    });
+    cy.on('window:alert', (t) => {
+      expect(t).to.contains('Error creating recommendation!');
+    })
+  });
+
+  it("should not create recommendation with no Data", () => {
+    cy.visit("http://localhost:3000/");
+      
+      cy.get("button").click();
+
+      cy.on("window:alert", (alert) => {
+        expect(alert).to.contains("Error creating recommendation!");
+      });
+
+      cy.url().should("equal", "http://localhost:3000/");
+      cy.get("#empty").should("contain.text", "No recommendations yet! Create your own :)")
+  });
 })
 
 describe('test for upvote a recommendation', () => {
