@@ -108,5 +108,3 @@ describe('test for downvote a recommendation', () => {
     cy.url().should("equal", "http://localhost:3000/");
   });
 })
-
-
