@@ -4,6 +4,10 @@ beforeEach(async () => {
   await cy.resetDatabase()
 });
 
+const API_BASE_URL = "http://localhost:6003"
+
+
+
 describe('test creation of a recommendation', () => {
   it('create a recommendation with correct input schema, sucess', () => {
     const recommendation = {
@@ -31,7 +35,7 @@ describe('test creation of a recommendation', () => {
     cy.createRecommendation(recommendation);
     cy.request({
       method: "POST",
-      url: 'http://localhost:6003/recommendations',
+      url: `${API_BASE_URL}/recommendations`,
       failOnStatusCode: false,
       body: recommendation
     }).then((response) => {
@@ -69,7 +73,7 @@ describe('test for upvote a recommendation', () => {
 
     cy.get('[data-test-id="upvote"]').click();
  
-    cy.intercept("POST", "/recommendations/1/upvote").as("upvote");
+    cy.intercept("POST", "/recommendations/2/upvote").as("upvote");
     cy.url().should("equal", "http://localhost:3000/");
   })
 

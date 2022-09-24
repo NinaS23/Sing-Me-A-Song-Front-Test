@@ -1,12 +1,6 @@
 import { faker } from "@faker-js/faker";
 
 
-const API_BASE_URL = "http://localhost:6003"
-
-before( () => {
-   cy.resetDatabase()
-});
-
 
 describe('test creation of a recommendation', () => {
   it('create a recommendation with correct input schema, sucess', () => {
@@ -26,6 +20,24 @@ describe('test creation of a recommendation', () => {
   
 })
 
+
+describe('test for upvote a recommendation', () => {
+  it('upvote a recommendation for random', () => {
+    
+    const recommendation = {
+      name: faker.music.songName(),
+      youtubeLink: `https://www.youtube.com/watch?v=${faker.random.alphaNumeric(11)}`
+    }
+
+    cy.visit("http://localhost:3000/");
+    cy.createRecommendation(recommendation);
+    
+    cy.getBySel(recommendation.name,recommendation).click()
+    cy.intercept("POST", "/recommendations/1/upvote").as("upvote");
+    cy.url().should("equal", "http://localhost:3000/");
+  })
+
+})
 
 describe("Get recommendations suit test", () => {
   it("get random recommendation", () => {
