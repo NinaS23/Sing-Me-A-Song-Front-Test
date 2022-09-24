@@ -41,7 +41,7 @@ export default function Recommendation({ name, youtubeLink, score, id, onUpvote 
       <Row>
         <GoArrowUp data-test-id="upvote" size="24px" onClick={handleUpvote} />
         {score}
-        <GoArrowDown data-test-id="downvote" size="24px" onClick={handleDownvote} />
+        <GoArrowDown  data-test-id="downvote" size="24px" onClick={handleDownvote} />
       </Row>
     </Container>
   );

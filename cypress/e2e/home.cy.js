@@ -52,7 +52,7 @@ describe('test for downvote a recommendation', () => {
     cy.createRecommendation(recommendation);
 
     cy.get('[data-test-id="downvote"]').click();
- 
+
     cy.intercept("POST", "/recommendations/1/downvote").as("downvote");
     cy.url().should("equal", "http://localhost:3000/");
   })
@@ -66,13 +66,10 @@ describe('test for downvote a recommendation', () => {
     cy.visit("http://localhost:3000/");
     cy.createRecommendation(recommendation);
 
-    cy.get('[data-test-id="downvote"]').click();
-    cy.get('[data-test-id="downvote"]').click();
-    cy.get('[data-test-id="downvote"]').click();
-    cy.get('[data-test-id="downvote"]').click();
-    cy.get('[data-test-id="downvote"]').click();
-    cy.get('[data-test-id="downvote"]').click();
- 
+    cy.get('[data-test-id="downvote"]').click(5);
+
+    cy.MultiClick('[data-test-id="downvote"]', 5)
+
     cy.intercept("POST", "/recommendations/1/downvote").as("downvote");
     cy.url().should("equal", "http://localhost:3000/");
   })
