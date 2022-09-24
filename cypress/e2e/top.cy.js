@@ -69,7 +69,7 @@ describe('test for upvote a recommendation', () => {
 
 
 describe("get top", () => {
-    it("more likes", async () => {
+    it("get recommendations order by likes", async () => {
       cy.visit("http://localhost:3000/top");
   
       cy.intercept("GET", `${API_BASE_URL}/recommendations/top/2`).as(
