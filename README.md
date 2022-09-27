@@ -19,10 +19,11 @@
 
 #  tests developed 
   ### e2e tests:
-- [x] Usuários podem cadastrar recomendações de músicas incluindo o nome e o link do YouTube
-- [x] Usuários podem acessar as últimas recomendações cadastradas
-- [x] Usuários podem acessar as recomendações mais curtidas
-- [x] Usuários podem descobrir novas recomendações aleatoriamente 
+- [x] Users can choose from songs including name and YouTube link
+- [x] Users can access the latest registered recommendations
+- [x] Users can access the most liked recommendations
+- [x] Users can discover new recommendations randomly
+
 
 <!-- Getting Started -->
 
